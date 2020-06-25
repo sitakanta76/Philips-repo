@@ -21,7 +21,7 @@ steps:
     templateLocation: 'Linked artifact'
     csmFile: 'CreateWebApp/azuredeploy.json'
     overrideParameters: |
-      -projectName philips -linkedTemplateUri
-      https://raw.githubusercontent.com/sitakanta76/Philips-repo/master/CreateWebApp/linkedStorageAccount.json
+      '-projectName philips -linkedTemplateUri
+      https://raw.githubusercontent.com/sitakanta76/Philips-repo/master/CreateWebApp/linkedStorageAccount.json'
     deploymentMode: 'Incremental'
     deploymentName: 'DeploypipelineTemplate'
