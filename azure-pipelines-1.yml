@@ -1,0 +1,26 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'Philipspipeline-conn'
+    subscriptionId: 'dac43d1d-75e1-410f-858c-064dce485520'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'Philipspipeline-rg'
+    location: 'Central US'
+    templateLocation: 'Linked artifact'
+    csmFile: 'CreateWebApp/azuredeploy.json'
+    overrideParameters: '-projectName philips123 -linkedtemplateUri https://raw.githubusercontent.com/sitakanta76/Philips-repo/master/CreateWebApp/linkedStorageAccount.json'
+    deploymentMode: 'Incremental'
+    deploymentName: 'Deploypipilinephilipstemplate'
+    addSpnToEnvironment: true
